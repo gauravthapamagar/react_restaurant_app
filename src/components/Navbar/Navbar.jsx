@@ -4,7 +4,12 @@ import {MdOutlineRestaurantMenu} from 'react-icons/md';
 import images from '../../constants/images';
 import './Navbar.css';
 
-const Navbar = () => (
+const Navbar = () => {
+  /**we are adding react state */
+
+  const [toggleMenu,setToggleMenu] = React.useState(false);
+
+  return (
   <nav className = "app__navbar">
     <div className="app__navbar-logo">{/*app=block,navbar=element,logo=modifier*/}
       <img src={images.gericht} alt="app" />
@@ -26,9 +31,11 @@ const Navbar = () => (
     {/**end of div */}
     {/**for small devices using hamburger icon */}
     <div className="app__navbar-smallscreen">
-      <GiHamburgerMenu color='#fff' fontSize={27} onClick={() => {}}/>
+      <GiHamburgerMenu color='#fff' fontSize={27} onClick={() => setToggleMenu(true)}/>
+      {/**if toggle menu true then only show this to users */}
+      {toggleMenu && (
       <div className="app__navbar-smallscreen_overlay flex__center slide-bottom">
-        <MdOutlineRestaurantMenu fontSize={27} className='overlay__close' onClick={()=>{}}/>
+        <MdOutlineRestaurantMenu fontSize={27} className='overlay__close' onClick={()=>setToggleMenu(false)}/>
         <ul className="app__navbar-smallscreen_links">
           <li className='p__opensans'><a href="#home">Home</a></li>
           <li className='p__opensans'><a href="#about">About</a></li>
@@ -37,8 +44,11 @@ const Navbar = () => (
           <li className='p__opensans'><a href="#contact">Contact</a></li>
         </ul>
       </div>
+      )}
     </div>
   </nav>
-);
+  );
+};
+
 
 export default Navbar;
