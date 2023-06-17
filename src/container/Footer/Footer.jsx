@@ -1,6 +1,6 @@
 import React from 'react';
 import {images} from '../../constants';
-import { FooterOverlay, Newsletter, SubHeading } from '../../components';
+import { FooterOverlay, Newsletter } from '../../components';
 import {FiFacebook,FiTwitter,FiInstagram} from 'react-icons/fi';
 
 import './Footer.css';
